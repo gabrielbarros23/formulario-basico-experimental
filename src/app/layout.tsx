@@ -1,5 +1,7 @@
 import { ReactNode } from 'react'
 import './globals.css'
+import { CreateToastProvider } from './Hooks/ToastContext'
+import { CreateInputValueProvider } from './Hooks/InputValueContext'
 
 export const metadata = {
   title: 'Formulário',
@@ -8,13 +10,11 @@ export const metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
-      <body
-        className={
-          ' box-border from-custom-green to-blue-500 bg-gradient-to-br'
-        }
-      >
-        {children}
+    <html lang="pt-br">
+      <body className="overflow-y-hidden">
+        <CreateToastProvider>
+          <CreateInputValueProvider>{children}</CreateInputValueProvider>
+        </CreateToastProvider>
       </body>
     </html>
   )
