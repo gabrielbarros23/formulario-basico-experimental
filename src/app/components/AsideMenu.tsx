@@ -36,7 +36,7 @@ export function AsideMenu() {
       )}
 
       {menuOpen && (
-        <div className="h-screen absolute bg-white -left-2 -top-0 w-60 pt-16 slide-in-left opacity-80">
+        <div className="h-screen absolute bg-white -left-2 -top-0 w-60 pt-16 slide-in-left  dark:text-white dark:bg-zinc-700">
           <button
             onClick={handleExitIconSwitchAnimation}
             className="absolute left-2 top-5"

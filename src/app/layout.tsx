@@ -2,6 +2,7 @@ import { ReactNode } from 'react'
 import './globals.css'
 import { CreateToastProvider } from './Hooks/ToastContext'
 import { CreateInputValueProvider } from './Hooks/InputValueContext'
+import { CreateThemeProviderContext } from './Hooks/ThemeContext'
 
 export const metadata = {
   title: 'Formulário',
@@ -12,9 +13,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
       <body className="overflow-y-hidden">
-        <CreateToastProvider>
-          <CreateInputValueProvider>{children}</CreateInputValueProvider>
-        </CreateToastProvider>
+        <CreateThemeProviderContext>
+          <CreateToastProvider>
+            <CreateInputValueProvider>{children}</CreateInputValueProvider>
+          </CreateToastProvider>
+        </CreateThemeProviderContext>
       </body>
     </html>
   )
