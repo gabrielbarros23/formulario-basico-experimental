@@ -3,6 +3,8 @@ import './globals.css'
 import { CreateToastProvider } from './Hooks/ToastContext'
 import { CreateInputValueProvider } from './Hooks/InputValueContext'
 import { CreateThemeProviderContext } from './Hooks/ThemeContext'
+import { Background } from '../app/components/Background'
+import { Header } from '../app/components/Header'
 
 export const metadata = {
   title: 'Formulário',
@@ -15,7 +17,12 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="overflow-y-hidden">
         <CreateThemeProviderContext>
           <CreateToastProvider>
-            <CreateInputValueProvider>{children}</CreateInputValueProvider>
+            <CreateInputValueProvider>
+              <Background>
+                <Header />
+                {children}
+              </Background>
+            </CreateInputValueProvider>
           </CreateToastProvider>
         </CreateThemeProviderContext>
       </body>

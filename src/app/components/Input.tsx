@@ -34,7 +34,7 @@ export function Input({ textLabel, type, field }: InputProps) {
       />
       <label
         htmlFor={field}
-        className="absolute top-2.5 left-2 text-zinc-400 peer-focus:text-black peer-hover:text-black transition-all duration-500 peer-focus:-top-7 peer-focus:left-0"
+        className="absolute top-2.5 left-2 text-zinc-400 peer-focus:text-black peer-hover:text-black transition-all duration-500 peer-focus:-top-7 peer-focus:left-0 dark:peer-hover:text-white dark:peer-focus:text-white"
         style={labelStayInTopIfInputLength}
       >
         {textLabel}
