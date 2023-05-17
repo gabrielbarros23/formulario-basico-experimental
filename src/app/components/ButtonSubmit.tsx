@@ -6,6 +6,8 @@ import {
   InputsValidationRegister,
   InputsValidationLogin,
 } from '../utils/SubmitValidation'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
 
 interface ButtonProps {
   text: string
@@ -13,6 +15,7 @@ interface ButtonProps {
 }
 
 export function ButtonSubmit({ submitFunction, text }: ButtonProps) {
+  const [test, setTest] = useState(false)
   const { name, password, passwordRepeat } = useInputValueContext()
 
   function handleSubmit(e: any) {
@@ -44,7 +47,16 @@ export function ButtonSubmit({ submitFunction, text }: ButtonProps) {
     }
 
     localStorage.setItem('account', JSON.stringify(account, null, 2))
+
     return toast.success('Conta criada com sucesso')
+  }
+
+  useEffect(() => {
+    setTest(true)
+  }, [])
+
+  if (!test) {
+    return null
   }
 
   return (

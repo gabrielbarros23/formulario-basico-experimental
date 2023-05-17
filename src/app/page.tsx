@@ -1,9 +1,9 @@
 import { ButtonSubmit } from './components/ButtonSubmit'
 import { Input } from './components/Input'
 import { Form } from './components/Form'
-import Link from 'next/link'
 import { Header } from './components/Header'
 import { Background } from './components/Background'
+import Link from 'next/link'
 
 export default function Home() {
   return (
