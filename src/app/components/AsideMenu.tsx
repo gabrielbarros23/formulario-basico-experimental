@@ -13,15 +13,15 @@ export function AsideMenu() {
 
   function handleMenuIconSwitchAnimation() {
     setMenuIconAnimation('slide-out-left')
-    setMenuOpen(true)
     setMenuAnimation('slide-in-left')
+    setMenuOpen(true)
   }
 
   function handleExitIconSwitchAnimation() {
     setMenuAnimation('slide-out-left')
     setTimeout(() => {
       setMenuOpen(false)
-    }, 1000)
+    }, 500)
     setMenuIconAnimation('slide-in-left')
   }
 

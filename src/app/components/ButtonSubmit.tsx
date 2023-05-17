@@ -2,6 +2,10 @@
 
 import { toast } from 'react-toastify'
 import { useInputValueContext } from '../Hooks/InputValueContext'
+import {
+  InputsValidationRegister,
+  InputsValidationLogin,
+} from '../utils/SubmitValidation'
 
 interface ButtonProps {
   text: string
@@ -10,11 +14,26 @@ interface ButtonProps {
 
 export function ButtonSubmit({ submitFunction, text }: ButtonProps) {
   const { name, password, passwordRepeat } = useInputValueContext()
+
   function handleSubmit(e: any) {
     e.preventDefault()
 
+    submitFunction === 'Register' ? handleRegister() : handleLogin()
+  }
+
+  function handleLogin() {
     try {
-      inputsValidation()
+      InputsValidationLogin({ name, password })
+    } catch {
+      return
+    }
+
+    toast.success('Login feito com sucesso')
+  }
+
+  function handleRegister() {
+    try {
+      InputsValidationRegister({ name, password, passwordRepeat })
     } catch {
       return
     }
@@ -22,30 +41,12 @@ export function ButtonSubmit({ submitFunction, text }: ButtonProps) {
     const account = {
       name,
       password,
-      passwordRepeat,
     }
-    localStorage.setItem('account', JSON.stringify(account, null, 2))
 
+    localStorage.setItem('account', JSON.stringify(account, null, 2))
     return toast.success('Conta criada com sucesso')
   }
 
-  function inputsValidation() {
-    if (!name) {
-      throw toast.error('Coloque seu nome')
-    }
-
-    if (!password || !passwordRepeat) {
-      throw toast.error('Coloque uma senha')
-    }
-
-    if (password !== passwordRepeat) {
-      throw toast.error('As senhas não são iguais')
-    }
-
-    if (password.length < 6) {
-      throw toast.error('A senha deve ter no mínimo 6 caracteres')
-    }
-  }
   return (
     <div className="w-60 h-14 from-custom-green to-blue-500 bg-gradient-to-br rounded-lg overflow-hidden dark:from-black dark:to-[#602588] dark:via-[#261b38]">
       <button

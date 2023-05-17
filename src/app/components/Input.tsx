@@ -1,6 +1,6 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useInputValueContext } from '../Hooks/InputValueContext'
 
 interface InputProps {
@@ -16,12 +16,21 @@ export function Input({ textLabel, type, field }: InputProps) {
 
   function handleOnChangeInput(value: string) {
     handleChangeValueInput(field, value)
+    handleLabelStyle(value)
+  }
+
+  function handleLabelStyle(value: string) {
     if (value.trim().length === 0) {
       setLabelStayInTopIfInputLength({})
     } else {
       setLabelStayInTopIfInputLength({ top: '-1.75rem', left: '0' })
     }
   }
+
+  useEffect(() => {
+    handleOnChangeInput('')
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
   return (
     <div className="border border-gray-400 rounded-md h-12 w-full relative">

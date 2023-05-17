@@ -1,6 +1,5 @@
-import { ReactNode } from 'react'
 import './globals.css'
-
+import { ReactNode } from 'react'
 import { CreateHooksContextProvider } from './Hooks'
 
 export const metadata = {
