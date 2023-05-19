@@ -33,7 +33,7 @@ export function AsideMenu() {
 
       {menuOpen && (
         <div
-          className={`h-screen absolute bg-white -left-10 -top-0 w-60 pt-16 ${menuAnimation}  dark:text-white dark:bg-zinc-700`}
+          className={`h-screen absolute bg-white -left-10 -top-0 w-60 pt-16 z-10 ${menuAnimation}  dark:text-white dark:bg-zinc-700`}
         >
           <button
             onClick={handleExitIconSwitchAnimation}

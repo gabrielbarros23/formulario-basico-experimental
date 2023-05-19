@@ -6,7 +6,6 @@ import {
   InputsValidationRegister,
   InputsValidationLogin,
 } from '../utils/SubmitValidation'
-import { useRouter } from 'next/router'
 import { useEffect, useState } from 'react'
 
 interface ButtonProps {
@@ -60,7 +59,7 @@ export function ButtonSubmit({ submitFunction, text }: ButtonProps) {
   }
 
   return (
-    <div className="w-60 h-14 from-custom-green to-blue-500 bg-gradient-to-br rounded-lg overflow-hidden dark:from-black dark:to-[#602588] dark:via-[#261b38]">
+    <div className="w-4/5 sm:w-60 h-14 from-custom-green to-blue-500 bg-gradient-to-br rounded-lg overflow-hidden min-w-[120px] dark:from-black dark:to-[#602588] dark:via-[#261b38]">
       <button
         className="w-full h-full flex justify-center items-center text-2xl text-white "
         onClick={(e) => handleSubmit(e)}

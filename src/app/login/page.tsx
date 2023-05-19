@@ -11,7 +11,7 @@ export default async function login() {
       <Header />
 
       <Form>
-        <h1 className="text-3xl w-full h-14 flex justify-center items-start">
+        <h1 className="text-3xl w-11/12 h-14 flex justify-center items-start min-w-[120px]">
           Entrar na Conta
         </h1>
 

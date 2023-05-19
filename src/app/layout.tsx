@@ -10,7 +10,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="pt-br">
-      <body className=" overflow-y-hidden">
+      <body>
         <CreateHooksContextProvider>{children}</CreateHooksContextProvider>
       </body>
     </html>
