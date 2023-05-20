@@ -3,8 +3,10 @@
 import { createContext, useContext } from 'react'
 import { ThemeProvider } from 'next-themes'
 
+type GetThemeInLocalStorage = () => string
+
 interface ThemeContextProps {
-  getThemeInLocalStorage: () => string
+  getThemeInLocalStorage: GetThemeInLocalStorage
 }
 
 const ThemeProviderContext = createContext<ThemeContextProps>({
@@ -12,7 +14,7 @@ const ThemeProviderContext = createContext<ThemeContextProps>({
 })
 
 export function CreateThemeProviderContext({ children }: any) {
-  function getThemeInLocalStorage() {
+  const getThemeInLocalStorage: GetThemeInLocalStorage = () => {
     return localStorage.getItem('theme') || 'white'
   }
 

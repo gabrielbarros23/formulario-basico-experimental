@@ -1,26 +1,33 @@
 'use client'
 
-import { toast } from 'react-toastify'
-import { useInputValueContext } from '../Hooks/InputValueContext'
 import {
   InputsValidationRegister,
   InputsValidationLogin,
 } from '../utils/SubmitValidation'
-import { useEffect, useState } from 'react'
+import { toast } from 'react-toastify'
+import { useInputValueContext } from '../Hooks/InputValueContext'
+
+type SubmitFunction = 'Register' | 'Login'
 
 interface ButtonProps {
   text: string
-  submitFunction: 'Register' | 'Login'
+  submitFunction: SubmitFunction
 }
 
 export function ButtonSubmit({ submitFunction, text }: ButtonProps) {
-  const [test, setTest] = useState(false)
   const { name, password, passwordRepeat } = useInputValueContext()
 
   function handleSubmit(e: any) {
     e.preventDefault()
 
-    submitFunction === 'Register' ? handleRegister() : handleLogin()
+    switch (submitFunction) {
+      case 'Register':
+        handleRegister()
+        break
+      case 'Login':
+        handleLogin()
+        break
+    }
   }
 
   function handleLogin() {
@@ -48,14 +55,6 @@ export function ButtonSubmit({ submitFunction, text }: ButtonProps) {
     localStorage.setItem('account', JSON.stringify(account, null, 2))
 
     return toast.success('Conta criada com sucesso')
-  }
-
-  useEffect(() => {
-    setTest(true)
-  }, [])
-
-  if (!test) {
-    return null
   }
 
   return (

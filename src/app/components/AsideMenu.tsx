@@ -6,10 +6,10 @@ import { MenuModal } from './MenuModal'
 import Link from 'next/link'
 
 export function AsideMenu() {
-  const [menuOpen, setMenuOpen] = useState(false)
-  const [modalIsOpen, setModalIsOpen] = useState(false)
-  const [menuIconAnimation, setMenuIconAnimation] = useState('')
-  const [menuAnimation, setMenuAnimation] = useState('')
+  const [menuOpen, setMenuOpen] = useState<boolean>(false)
+  const [modalIsOpen, setModalIsOpen] = useState<boolean>(false)
+  const [menuIconAnimation, setMenuIconAnimation] = useState<string>('')
+  const [menuAnimation, setMenuAnimation] = useState<string>('')
 
   function handleMenuIconSwitchAnimation() {
     setMenuIconAnimation('slide-out-left')
@@ -30,6 +30,11 @@ export function AsideMenu() {
       <button className=" switch-exit" onClick={handleMenuIconSwitchAnimation}>
         <AiOutlineMenu className={` w-10 h-20 ${menuIconAnimation}`} />
       </button>
+
+      <MenuModal
+        modalIsOpen={modalIsOpen}
+        onRequestClose={() => setModalIsOpen(false)}
+      />
 
       {menuOpen && (
         <div
@@ -54,10 +59,6 @@ export function AsideMenu() {
             </ul>
           </li>
         </div>
-      )}
-
-      {modalIsOpen && (
-        <MenuModal onRequestClose={() => setModalIsOpen(false)} />
       )}
     </div>
   )

@@ -5,9 +5,9 @@ import { useTheme } from 'next-themes'
 import { useThemeContext } from '../Hooks/ThemeContext'
 
 export function TriggerTheme() {
-  const [mounted, setMounted] = useState(false)
   const { getThemeInLocalStorage } = useThemeContext()
   const { theme, setTheme } = useTheme()
+  const [mounted, setMounted] = useState<boolean>(false)
 
   function handleThemeSwitch() {
     if (theme === 'system' || theme === 'white') {
@@ -29,6 +29,7 @@ export function TriggerTheme() {
   if (!mounted) {
     return null
   }
+
   return (
     <label
       htmlFor="check"

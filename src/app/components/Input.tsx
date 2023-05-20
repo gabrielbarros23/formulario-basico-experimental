@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useInputValueContext } from '../Hooks/InputValueContext'
 
-interface InputProps {
+type InputProps = {
   textLabel: 'Nome' | 'Senha'
   type: 'text' | 'password'
   field: 'Name' | 'Password' | 'PasswordRepeat'
@@ -12,7 +12,7 @@ interface InputProps {
 export function Input({ textLabel, type, field }: InputProps) {
   const { handleChangeValueInput, handleValueInput } = useInputValueContext()
   const [labelStayInTopIfInputLength, setLabelStayInTopIfInputLength] =
-    useState({})
+    useState<object>({})
 
   function handleOnChangeInput(value: string) {
     handleChangeValueInput(field, value)

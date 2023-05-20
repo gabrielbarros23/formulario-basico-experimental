@@ -1,9 +1,9 @@
 import { ButtonSubmit } from '../components/ButtonSubmit'
 import { Input } from '../components/Input'
 import { Form } from '../components/Form'
-import Link from 'next/link'
 import { Background } from '../components/Background'
 import { Header } from '../components/Header'
+import Link from 'next/link'
 
 export default async function login() {
   return (

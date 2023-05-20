@@ -2,15 +2,18 @@
 
 import { createContext, useContext, useState } from 'react'
 
-interface InputValueContextProps {
+type HandleChangeValueInput = (field: string, value: string) => void
+type HandleValueInput = (field: string) => string
+
+type InputValueContextProps = {
   name: string
   setName: (name: string) => void
   password: string
   setPassword: (password: string) => void
   passwordRepeat: string
   setPasswordRepeat: (passwordRepeat: string) => void
-  handleChangeValueInput: (field: string, value: string) => void
-  handleValueInput: (field: string) => string
+  handleChangeValueInput: HandleChangeValueInput
+  handleValueInput: HandleValueInput
 }
 
 const InputValueProvider = createContext<InputValueContextProps>({
@@ -31,42 +34,49 @@ export function CreateInputValueProvider({ children }: any) {
   const [password, setPassword] = useState('')
   const [passwordRepeat, setPasswordRepeat] = useState('')
 
-  const handleValueInput = (field: string) => {
-    if (field === 'Name') {
-      return name
+  const handleValueInput: HandleValueInput = (field: string) => {
+    switch (field) {
+      case 'Name':
+        return name
+      case 'Password':
+        return password
+      case 'PasswordRepeat':
+        return passwordRepeat
+      default:
+        return ''
     }
-    if (field === 'Password') {
-      return password
-    }
-    if (field === 'PasswordRepeat') {
-      return passwordRepeat
-    }
-    return ''
   }
 
-  const handleChangeValueInput = (field: string, value: string) => {
-    if (field === 'Name') {
-      return setName(value)
-    }
-    if (field === 'Password') {
-      return setPassword(value)
-    }
-    if (field === 'PasswordRepeat') {
-      return setPasswordRepeat(value)
+  const handleChangeValueInput: HandleChangeValueInput = (
+    field: string,
+    value: string,
+  ) => {
+    switch (field) {
+      case 'Name':
+        setName(value)
+        break
+
+      case 'Password':
+        setPassword(value)
+        break
+
+      case 'PasswordRepeat':
+        setPasswordRepeat(value)
+        break
     }
   }
 
   return (
     <InputValueProvider.Provider
       value={{
+        handleChangeValueInput,
+        handleValueInput,
         name,
         setName,
         password,
         setPassword,
         passwordRepeat,
         setPasswordRepeat,
-        handleChangeValueInput,
-        handleValueInput,
       }}
     >
       {children}

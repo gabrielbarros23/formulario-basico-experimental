@@ -3,15 +3,18 @@ import ReactModal from 'react-modal'
 
 interface ModalProps {
   onRequestClose: () => void
+  modalIsOpen: boolean
 }
 
-export function MenuModal({ onRequestClose }: ModalProps) {
+export function MenuModal({ modalIsOpen, onRequestClose }: ModalProps) {
   return (
     <ReactModal
-      isOpen
+      isOpen={modalIsOpen}
       onRequestClose={onRequestClose}
       ariaHideApp={false}
-      style={{ overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)' } }}
+      style={{
+        overlay: { backgroundColor: 'rgba(0, 0, 0, 0.5)', zIndex: '20' },
+      }}
     >
       <button onClick={onRequestClose} className="text-black w-10 h-10">
         <AiOutlineClose className={'text-black w-10 h-10'} />

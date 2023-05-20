@@ -1,13 +1,17 @@
 'use client'
 
-import { createContext } from 'react'
+import { ReactNode, createContext } from 'react'
 import { CreateToastProvider } from '.././Hooks/ToastContext'
 import { CreateInputValueProvider } from '.././Hooks/InputValueContext'
 import { CreateThemeProviderContext } from '.././Hooks/ThemeContext'
 
 const HooksContextProvider = createContext({})
 
-export function CreateHooksContextProvider({ children }: any) {
+export function CreateHooksContextProvider({
+  children,
+}: {
+  children: ReactNode
+}) {
   return (
     <HooksContextProvider.Provider value={{}}>
       <CreateThemeProviderContext>
